@@ -1,5 +1,3 @@
-// p-1
-
 function  cubeNumber(number){
     if (typeof number !== 'number') {
         return 'Please, provide a number.'
@@ -7,27 +5,22 @@ function  cubeNumber(number){
    let result =Math.pow(number, 3);
    return result;
 }
-// console.log(cubeNumber('as'));
-
-// p-2
 
 function matchFinder(string1, string2){
     if (typeof string1 !== 'string' || typeof string2 !== 'string') {
         return 'Please, provide a string.'
     }
     else{
-        return string1.toLowerCase().includes(string2.toLowerCase())
+        return string1.includes(string2)
     }
 }
-// console.log(matchFinder('Afuq', [4]));
-
-// p-3
 
 function sortMaker(arr) {
     if (!Array.isArray(arr) || arr.length !== 2) {
         return 'Please, provide an array of two numbers.';
     }
     else{
+        
         if (arr[0] < 0 || arr[1] < 0) {
             return 'Invalid Input';
         }
@@ -35,27 +28,66 @@ function sortMaker(arr) {
             return 'equal';
         }
         else if(arr[0] > 0 || arr[1] > 0){
-            return arr.reverse();
+            let myArr = [];
+           if (arr[0] > arr[1]) {
+            myArr = [arr[0], arr[1]]
+             return myArr;
+           }
+           else{
+            myArr = [arr[1], arr[0]]
+             return myArr;
+           }
         }
     }
 }
 
-// console.log(sortMaker(4));
-
-// p-4
-
 function findAddress(obj) {
-    let keys = Object.keys(obj);
-    for (const key of keys) {
-        return obj[key];
+    if (obj.street === undefined && obj.house === undefined && obj.society === undefined) {
+        obj.street = '_';
+        obj.house = '_';
+        obj.society = '_';
+        let text = obj.street + ','+ obj.house + ',' + obj.society;
+        return text;
     }
-    return keys;
-    
+   
+    else if (obj.street === undefined && obj.house === undefined) {
+       obj.street = '_';
+        obj.house = '_';
+        let text = obj.street + ','+ obj.house + ',' + obj.society;
+        return text;
+    }
+    else if (obj.house === undefined && obj.society === undefined) {
+       obj.house = '_';
+        obj.society = '_';
+        let text = obj.street + ','+ obj.house + ',' + obj.society;
+        return text;
+    }
+    else if (obj.street === undefined && obj.society === undefined) {
+       obj.street = '_';
+        obj.society = '_';
+        let text = obj.street + ','+ obj.house + ',' + obj.society;
+        return text;
+    }
+    else if (obj.street === undefined) {
+       obj.street = '_';
+        let text = obj.street + ','+ obj.house + ',' + obj.society;
+        return text;
+    }
+    else if (obj.house === undefined) {
+       obj.house = '_';
+        let text = obj.street + ','+ obj.house + ',' + obj.society;
+        return text;
+    }
+    else if (obj.society === undefined) {
+       obj.society = '_';
+        let text = obj.street + ','+ obj.house + ',' + obj.society;
+        return text;
+    }
+   else{ 
+    let text = obj.street + ','+ obj.house + ',' + obj.society;
+   return text;
 }
-
-console.log(findAddress({name:'asd', age:45, address: 'qwe'}));
-
-// p-5
+}
 
 function canPay(changeArray, totalDue) {
     if (changeArray.length === 0 || totalDue <= 0) {
@@ -72,5 +104,3 @@ function canPay(changeArray, totalDue) {
             return false;
         }
 }
-
-// console.log(canPay([1], 15));
